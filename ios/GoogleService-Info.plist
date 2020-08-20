@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>89309714557-8luc16ftbk3ik3evcr9k7q6f4f2esdlo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.89309714557-8luc16ftbk3ik3evcr9k7q6f4f2esdlo</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>89309714557-rlf9mj48jfflm0m20g2p967lq0pjovln.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDp3UPXLfBRZAP__XxvtoTCfT7s3AIeZgk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>89309714557</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>vn.hblab.vetscope</string>
+	<key>PROJECT_ID</key>
+	<string>vetscope-app-dev</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vetscope-app-dev.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:89309714557:ios:f695bbcc87b7df0eed7914</string>
+	<key>DATABASE_URL</key>
+	<string>https://vetscope-app-dev.firebaseio.com</string>
+</dict>
+</plist>
