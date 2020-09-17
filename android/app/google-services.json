@@ -1,43 +1,42 @@
 {
   "project_info": {
-    "project_number": "89309714557",
-    "firebase_url": "https://vetscope-app-dev.firebaseio.com",
-    "project_id": "vetscope-app-dev",
-    "storage_bucket": "vetscope-app-dev.appspot.com"
+    "project_number": "243955054405",
+    "firebase_url": "https://vetscope-app.firebaseio.com",
+    "project_id": "vetscope-app",
+    "storage_bucket": "vetscope-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:89309714557:android:701d5de805490f07ed7914",
+        "mobilesdk_app_id": "1:243955054405:android:fae173650b89e1118eb02c",
         "android_client_info": {
           "package_name": "com.hblab.vetscope"
         }
       },
       "oauth_client": [
         {
-          "client_id": "89309714557-rlf9mj48jfflm0m20g2p967lq0pjovln.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.hblab.vetscope",
-            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
-          }
-        },
-        {
-          "client_id": "89309714557-ggok0951b64lburavmci8v1v85uo9spq.apps.googleusercontent.com",
+          "client_id": "243955054405-330f9d8k78iq7t95mgu67p8q8jp9bk99.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBaYGhhX7vBfd1olDH-ZEoY_G04L3XDq0Q"
+          "current_key": "AIzaSyD_6q5hu3WIHx6kb4j-bK28F-ToADdioyc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "89309714557-ggok0951b64lburavmci8v1v85uo9spq.apps.googleusercontent.com",
+              "client_id": "243955054405-330f9d8k78iq7t95mgu67p8q8jp9bk99.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "243955054405-disa3uka4p5b467j19pfvvmdtjpbjjtl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "vn.hblab.vetscope"
+              }
             }
           ]
         }
