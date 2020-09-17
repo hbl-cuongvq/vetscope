@@ -5,6 +5,7 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 
 import {AuthContext} from '../contexts/AuthContext';
@@ -15,6 +16,7 @@ import {BlurView} from '@react-native-community/blur';
 import {normalize} from '../configs/responsive';
 
 const colorWhiteCustom = 'rgba(255,255,255,0.7)';
+const colorBlackCustom = 'rgba(0,0,0,0.54)';
 const colorGreenCustom = '#18d08c';
 const title = 'Update Account';
 const message =
@@ -71,14 +73,16 @@ const PickerWorkType = ({label, ...rest}) => {
     <View>
       <Text style={[styles.label, styles.textColor]}>{label}</Text>
       <View style={styles.pickerWrapper}>
-        <Picker style={styles.picker} mode={"dropdown"} {...rest}>
+        <Picker style={styles.picker} mode={'dialog'} {...rest}>
           {workTypes.map((workType, index) => {
             return (
               <Picker.Item
                 key={index}
                 label={workType.label}
                 value={workType.value}
-                color={colorWhiteCustom}
+                color={
+                  Platform.OS === 'ios' ? colorWhiteCustom : colorBlackCustom
+                }
               />
             );
           })}
