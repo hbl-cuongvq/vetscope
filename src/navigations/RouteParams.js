@@ -57,6 +57,16 @@ const forgotPasswordParams = {
   url: `${Config.BASE_URL}/users/password/new`,
 };
 
+const profileParams = {
+  title: loadingTitle,
+  url: `${Config.BASE_URL}/profile`,
+};
+
+const editSettingsParams = {
+  title: loadingTitle,
+  url: `${Config.BASE_URL}/edit_setting`,
+};
+
 export {
   contactParams,
   aboutParams,
@@ -69,4 +79,6 @@ export {
   currentTopicsParams,
   searchParams,
   forgotPasswordParams,
+  profileParams,
+  editSettingsParams,
 };

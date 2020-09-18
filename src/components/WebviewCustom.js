@@ -3,7 +3,14 @@ import {WebView} from 'react-native-webview';
 import Config from 'react-native-config';
 
 const WebviewCustom = (props) => {
-  const {uri, onLoadStart, setRef, redirectHome, ...restProps} = props;
+  const {
+    uri,
+    onLoadStart,
+    setRef,
+    redirectHome,
+    setIsloading,
+    ...restProps
+  } = props;
   const [currentURI, setCurrentURI] = useState(props.source.uri);
   const newSource = {...props.source, uri: currentURI};
 
@@ -23,6 +30,7 @@ const WebviewCustom = (props) => {
       source={newSource}
       cacheEnabled
       sharedCookiesEnabled={true}
+      onLoadStart={() => setIsloading(true)}
       domStorageEnabled={true}
       bounces={false}
       onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}

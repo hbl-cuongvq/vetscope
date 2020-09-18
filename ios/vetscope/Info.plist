@@ -25,16 +25,16 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb2679589748944600</string>
+				<string>fb2661528624163180</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>2679589748944600</string>
+	<string>2661528624163180</string>
 	<key>FacebookDisplayName</key>
-	<string>vetscope-dev</string>
+	<string>VETSCOPE</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

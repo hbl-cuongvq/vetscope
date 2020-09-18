@@ -12,55 +12,60 @@ import {AuthContext} from '../../contexts/AuthContext';
 import styles from './style';
 
 const jsCode = `
-        let header = document.getElementById("header");
-        if (header) {
-          header.style.display = 'none';
-          header.style.visibility="hidden";
-          header.style.height=0;
+        try {
+          let header = document.getElementById("header");
+          if (header) {
+            header.style.display = 'none';
+            header.style.visibility="hidden";
+            header.style.height=0;
+          }
+  
+          let title = document.querySelector(".formContent_header .title");
+          if (title) {
+            title.style.display = 'none';
+            title.style.visibility="hidden";
+            title.style.height=0;
+          }
+  
+          let formContent = document.querySelector(".formContent");
+          if (formContent) {
+            formContent.style.marginTop='32px';
+          }
+  
+          let content = document.getElementById("content");
+          if (content) {
+            content.style.paddingTop = 0;
+          }
+  
+          let fixedSignup = document.getElementsByClassName("fixedSignup");
+          for (var i=0;i<fixedSignup.length;i++){
+              fixedSignup[i].style.display = 'none';
+              fixedSignup[i].style.visibility="hidden";
+              fixedSignup[i].style.height=0;
+          }
+  
+          let formContentBack = document.getElementsByClassName("formContent_back");
+          for (var i=0;i<formContentBack.length;i++){
+              formContentBack[i].style.display = 'none';
+              formContentBack[i].style.visibility="hidden";
+              formContentBack[i].style.height=0;
+          }
+  
+          let body = document.querySelector("body");
+          if (body) {
+            body.style.userSelect='none';
+            body.style.webkitUserSelect='none';
+            body.style.MozUserSelect ='none';
+          }
+  
+          let fixedBtn = document.getElementById("fixedBtn");
+          if (fixedBtn) {
+            fixedBtn.style.paddingBottom = '24px';
+          }
+        } catch(error) {
+          console.log(error)
         }
-
-        let title = document.querySelector(".formContent_header .title");
-        if (title) {
-          title.style.display = 'none';
-          title.style.visibility="hidden";
-          title.style.height=0;
-        }
-
-        let formContent = document.querySelector(".formContent");
-        if (formContent) {
-          formContent.style.marginTop='32px';
-        }
-
-        let content = document.getElementById("content");
-        if (content) {
-          content.style.paddingTop = 0;
-        }
-
-        let fixedSignup = document.getElementsByClassName("fixedSignup");
-        for (var i=0;i<fixedSignup.length;i++){
-            fixedSignup[i].style.display = 'none';
-            fixedSignup[i].style.visibility="hidden";
-            fixedSignup[i].style.height=0;
-        }
-
-        let formContentBack = document.getElementsByClassName("formContent_back");
-        for (var i=0;i<formContentBack.length;i++){
-            formContentBack[i].style.display = 'none';
-            formContentBack[i].style.visibility="hidden";
-            formContentBack[i].style.height=0;
-        }
-
-        let body = document.querySelector("body");
-        if (body) {
-          body.style.userSelect='none';
-          body.style.webkitUserSelect='none';
-          body.style.MozUserSelect ='none';
-        }
-
-        let fixedBtn = document.getElementById("fixedBtn");
-        if (fixedBtn) {
-          fixedBtn.style.paddingBottom = '24px';
-        }
+        true;
 `;
 
 const WebViewScreen = ({route, navigation}) => {
@@ -83,25 +88,28 @@ const WebViewScreen = ({route, navigation}) => {
 
   const redirectHome = () => navigation.navigate('Home');
 
-  let webViewRef;
+  const webViewRef = React.createRef();
 
   const isShowAuthScreen = ['SignUp', 'ForgotPassword'].includes(route.name);
 
   const goBack = useCallback(() => {
-    if (nativeEvent) {
-      console.log(canGoBack);
-      if (canGoBack) {
-        webViewRef.goBack();
-      } else {
-        if (isShowAuthScreen) {
-          navigation.navigate('SignIn');
+    try {
+      if (nativeEvent) {
+        if (canGoBack) {
+          webViewRef.current.goBack();
         } else {
-          navigation.navigate('Home');
+          if (isShowAuthScreen) {
+            navigation.navigate('SignIn');
+          } else {
+            navigation.navigate('Home');
+          }
         }
+        return true;
       }
-      return true;
+      return false;
+    } catch (error) {
+      console.log(error);
     }
-    return false;
   }, [webViewRef, canGoBack]);
 
   const getTitle = () => {
@@ -110,7 +118,7 @@ const WebViewScreen = ({route, navigation}) => {
 
   useEffect(() => {
     if (isReload) {
-      webViewRef.reload();
+      webViewRef.current.reload();
     }
   }, [isReload, webViewRef]);
 
@@ -171,20 +179,18 @@ const WebViewScreen = ({route, navigation}) => {
       {isLoading && <Loading />}
 
       <WebviewCustom
-        setRef={(r) => (webViewRef = r)}
+        setRef={(r) => {
+          webViewRef.current = r;
+        }}
         source={{
           uri: url,
           headers: {
             Authorization: `Bearer ${auth.tokenState}`,
           },
         }}
-        onLoadStart={() => {
-          console.log('Start load');
-          setIsloading(true);
-        }}
         onLoadEnd={(event) => {
           setNativeEvent(event.nativeEvent);
-          webViewRef.injectJavaScript(jsCode);
+          webViewRef.current.injectJavaScript(jsCode);
           setIsloading(false);
         }}
         redirectHome={redirectHome}
@@ -192,6 +198,7 @@ const WebViewScreen = ({route, navigation}) => {
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {useNativeDriver: false},
         )}
+        setIsloading={setIsloading}
         style={styles.webView(isLoading)}
         containerStyle={styles.webView(isLoading)}
       />

@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: SCREEN_HEIGHT,
+    zIndex: 99999,
   },
   backButtonAnimate: (insets, translateY) => ({
     position: 'absolute',

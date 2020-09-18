@@ -1,3 +1,4 @@
+/* eslint-disable no-catch-shadow */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-shadow */
 /* eslint-disable no-alert */

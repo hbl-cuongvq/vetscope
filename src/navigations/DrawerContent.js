@@ -2,9 +2,9 @@ import React, {useContext, useEffect, useState} from 'react';
 
 import {AuthContext} from '../contexts/AuthContext';
 
-import {View, Text, Image} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 
-import CacheImage from '../components/CacheImage'
+import CacheImage from '../components/CacheImage';
 
 import styles from './style';
 
@@ -14,9 +14,13 @@ import {DrawerItem} from '@react-navigation/drawer';
 
 import Feather from 'react-native-vector-icons/Feather';
 
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 import {normalize} from '../configs/responsive';
 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
+import {profileParams, editSettingsParams} from './RouteParams';
 
 import {getProfile} from '../common/localStorageManager';
 
@@ -111,9 +115,22 @@ const DrawerContent = (props) => {
       </View>
 
       {/* FULL NAME */}
-      <Text style={styles.fullName}>
-        {fullName(profile.firstName, profile.middleName, profile.lastName)}
-      </Text>
+      <View style={styles.fullNameWrapper}>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate('WebView', profileParams)}>
+          <Text style={styles.fullName}>
+            {fullName(profile.firstName, profile.middleName, profile.lastName)}
+          </Text>
+        </TouchableOpacity>
+        <MaterialIcons
+          name="edit"
+          color={'white'}
+          size={normalize(22)}
+          onPress={() =>
+            props.navigation.navigate('WebView', editSettingsParams)
+          }
+        />
+      </View>
 
       {/* NICK NAME */}
       <Text style={styles.nickName}>

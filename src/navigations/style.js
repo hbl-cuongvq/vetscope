@@ -61,14 +61,20 @@ const styles = StyleSheet.create({
     borderRadius: 72,
     backgroundColor: '#011A27',
   },
+  fullNameWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: normalize(16),
+  },
   fullName: {
     alignSelf: 'center',
     color: 'white',
     fontSize: normalize(20),
-    marginTop: 16,
     textShadowColor: 'white',
     textShadowRadius: 6,
     letterSpacing: 1.4,
+    marginRight: normalize(8)
   },
   drawerItem: {
     alignSelf: 'stretch',
